@@ -1,33 +1,65 @@
-import 'package:json_dynamic_widget/json_dynamic_widget.dart';
-part 'primary_button.g.dart';
+import 'package:flutter/material.dart';
+import 'package:json_app/components/buttons/core/core_button.dart';
 
-@jsonWidget
-abstract class _PrimaryButtonBuilder extends JsonWidgetBuilder {
-  const _PrimaryButtonBuilder({required super.args});
+class PrimaryButton extends StatefulWidget {
+  final void Function() onPressed;
+  final bool funds;
+  final bool? logoff;
+  final String text;
+  final Color color;
+  final Color textColor;
+
+  const PrimaryButton({
+    super.key,
+    required this.color,
+    this.logoff = false,
+    required this.text,
+    required this.funds,
+    required this.textColor,
+    required this.onPressed,
+  });
 
   @override
-  PrimaryButton buildCustom({
-    ChildWidgetBuilder? childBuilder,
-    required BuildContext context,
-    required JsonWidgetData data,
-    Key? key,
-  });
+  State<PrimaryButton> createState() => _PrimaryButtonState();
 }
 
-class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({super.key});
+class _PrimaryButtonState extends State<PrimaryButton> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.blue,
+    return Material(
+      color: widget.color,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        onTap: () => widget.onPressed,
+        borderRadius: BorderRadius.circular(20),
+        child: _buildContainer(),
       ),
-      onPressed: () {
-        print("botao pressionado");
-      },
-      child: Text('TextButton'),
+    );
+  }
+
+  Widget _buildContainer() {
+    return Ink(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: widget.onPressed, // Correção feita aqui
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 15),
+          child: CoreButton(
+            logoff: widget.logoff!,
+            funds: widget.funds,
+            cta: true,
+            text: widget.text,
+            color: widget.textColor,
+          ),
+        ),
+      ),
     );
   }
 }

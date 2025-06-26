@@ -20,7 +20,6 @@ class CustomWidgetRegistrar extends _CustomWidgetRegistrar {
     return CustomWidgetRegistrar()
       ..withLinearGraph()
       ..withLoadingAlert()
-      ..withPrimaryButton()
       ..withSvg()
       ..register(registry);
   }
@@ -53,14 +52,6 @@ class CustomWidgetRegistrar extends _CustomWidgetRegistrar {
       schemaId: LoadingAlertSchema.id,
     );
     _schemas[LoadingAlertSchema.id] = LoadingAlertSchema.schema;
-  }
-
-  void withPrimaryButton() {
-    _builders[PrimaryButtonBuilder.kType] = const JsonWidgetBuilderContainer(
-      builder: PrimaryButtonBuilder.fromDynamic,
-      schemaId: PrimaryButtonSchema.id,
-    );
-    _schemas[PrimaryButtonSchema.id] = PrimaryButtonSchema.schema;
   }
 
   void withSvg() {
