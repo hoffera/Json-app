@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'climaapp-61faf.firebasestorage.app',
     measurementId: 'G-C6QYH2KQY5',
   );
+
 }

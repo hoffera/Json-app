@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:json_app/app/enum/enum.dart';
-import 'package:json_app/app/routes/app_pages.dart';
 import 'package:json_app/components/buttons/primary/primary_button.dart';
-import 'package:json_app/components/dialog/show_snackbar.dart';
 import 'package:json_app/components/input/text_input.dart';
 import '../controllers/register_page_controller.dart';
 
 class RegisterPageView extends GetView<RegisterPageController> {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repasswordController = TextEditingController();
-  // AuthService authServices = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   RegisterPageView({super.key});
@@ -92,7 +84,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
 
   _inputs() {
     return Form(
-      key: _formKey,
+      key: controller.formKey,
       child: Column(
         children: [
           _nameInput(),
@@ -117,7 +109,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
           password: false,
           name: true,
           text: 'Nome completo',
-          controller: _nameController,
+          controller: controller.nameController,
         ),
       ],
     );
@@ -133,7 +125,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
           email: true,
           password: false,
           text: 'E-mail',
-          controller: _emailController,
+          controller: controller.emailController,
         ),
       ],
     );
@@ -148,7 +140,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
           off: false,
           password: true,
           text: '*********',
-          controller: _passwordController,
+          controller: controller.passwordController,
         ),
       ],
     );
@@ -163,7 +155,7 @@ class RegisterPageView extends GetView<RegisterPageController> {
           off: false,
           password: true,
           text: '*********',
-          controller: _repasswordController,
+          controller: controller.repasswordController,
         ),
       ],
     );
@@ -177,60 +169,8 @@ class RegisterPageView extends GetView<RegisterPageController> {
         color: AppColors.primary,
         textColor: Colors.white,
         text: "Cadastrar",
-        // onPressed: () {
-        //   _registerButtonPressed(context);
-        // },
-        onPressed: () => Get.toNamed(Routes.HOME_PAGE),
+        onPressed: () => controller.registerUser(context),
       ),
     );
-  }
-
-  _registerButtonPressed(context) {
-    String email = _emailController.text;
-    String password = _passwordController.text;
-    String name = _nameController.text;
-    print(email);
-    print(password);
-
-    if (_formKey.currentState!.validate() && _passwordCorrect()) {
-      // authServices
-      //     .registerUser(name: name, email: email, password: password)
-      //     .then((error) {
-      //       if (error == null) {
-      //         final user = FirebaseAuth.instance.currentUser;
-      //         _saveUserToken(user);
-      //         Navigator.pushNamed(context, '/NavPage');
-      //         showSnackBar(
-      //           context: context,
-      //           mensagem: "Usuário cadastrado com sucesso!",
-      //           isErro: false,
-      //         ); // Defina isErro como false para uma mensagem de sucesso.
-      //       } else {
-      //         showSnackBar(
-      //           context: context,
-      //           mensagem: "Verifique seus dados",
-      //           isErro: true,
-      //         ); // Exibe o erro detalhado.
-      //         print("Erro ao criar a conta: $error");
-      //       }
-      //     });
-    } else {}
-  }
-
-  _passwordCorrect() {
-    if (_passwordController.text == _repasswordController.text) {
-      print("senha igual");
-      return true;
-    }
-    print("erro senha");
-    return false;
-  }
-
-  Future<void> _saveUserToken(User? user) async {
-    if (user != null) {
-      final userId = user.uid; // Obtém o ID do usuário
-      //  final tokenServices = TokenServices();
-      //  await tokenServices.saveToken(userId); // Armazena o token no Firestore
-    }
   }
 }
