@@ -7,9 +7,7 @@ import 'package:json_app/components/input/text_input.dart';
 import '../controllers/register_page_controller.dart';
 
 class RegisterPageView extends GetView<RegisterPageController> {
-  final _formKey = GlobalKey<FormState>();
-
-  RegisterPageView({super.key});
+  const RegisterPageView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

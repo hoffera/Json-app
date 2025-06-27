@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,8 +21,6 @@ class RegisterPageController extends GetxController {
     final password = passwordController.text.trim();
     final name = nameController.text.trim();
 
-    print("name");
-    print(name);
     if (formKey.currentState!.validate() && _passwordsMatch()) {
       authServices
           .registerUser(name: name, email: email, password: password)

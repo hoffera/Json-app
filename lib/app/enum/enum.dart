@@ -2,13 +2,13 @@ import 'dart:ui';
 
 class AppColors {
   /// Verde vibrante
-  static const primary = Color(0xFF4CAF50);
+  static const primary = Color.fromARGB(255, 0, 86, 147);
 
   /// Roxo claro para detalhes
   static const secondary = Color(0xFFC39BD3);
 
   /// Fundo roxo escuro
-  static const background = Color(0xFF4A148C);
+  static const background = Color(0xFF001b48);
 }
 
 enum TypographyVariant {
@@ -33,3 +33,5 @@ enum TypographyVariant {
   /// font-size: 10
   h7,
 }
+
+enum _PositionItemType { log, position }

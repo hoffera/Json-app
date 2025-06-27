@@ -18,7 +18,7 @@ ThemeData primaryThemeData = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: Colors.white, // Background branco
+    fillColor: Colors.red, // Background branco
     hintStyle: const TextStyle(
       color: Colors.grey,
     ), // Cor do hint (texto de dica)

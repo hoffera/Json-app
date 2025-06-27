@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:json_app/app/modules/home_home/views/home_home_view.dart';
+import 'package:json_app/app/modules/home_page/bindings/home_page_binding.dart';
+import 'package:json_app/app/modules/home_page/views/home_page_view.dart';
+import 'package:json_app/app/modules/login_page/views/login_page_view.dart';
 import 'package:json_app/app/modules/nav_page/views/nav_page_view.dart';
 
 import 'package:json_app/app/themes/theme_provider.dart';
@@ -54,35 +57,22 @@ class MyApp extends StatelessWidget {
 }
 
 class RouteScreens extends StatelessWidget {
-  const RouteScreens({super.key});
+  RouteScreens({super.key});
+
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.userChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: LoadingAlert());
-        } else {
-          if (snapshot.hasData) {
-            // final user =
-            //     snapshot.data; // Obtenha o usuário a partir do snapshot
-            // _saveUserToken(user); // Chama o método para salvar o token
-            return NavPageView();
-          } else {
-            return const HomeHomeView();
-          }
-        }
-      },
-    );
+    return Obx(() {
+      if (authController.firebaseUser.value == null) {
+        // Navega para login
+        Future.microtask(() => Get.offAllNamed('/home-page'));
+        return Container();
+      } else {
+        // Navega para home
+        Future.microtask(() => Get.offAllNamed('/home-page'));
+        return Container();
+      }
+    });
   }
-
-  // // Método separado para salvar o token do usuário
-  // Future<void> _saveUserToken(User? user) async {
-  //   if (user != null) {
-  //     final userId = user.uid; // Obtém o ID do usuário
-  //     final tokenServices = TokenServices();
-  //     await tokenServices.saveToken(userId); // Armazena o token no Firestore
-  //   }
-  // }
 }

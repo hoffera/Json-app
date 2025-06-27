@@ -16,12 +16,7 @@ import 'package:mix/mix.dart';
 import '../controllers/login_page_controller.dart';
 
 class LoginPageView extends GetView<LoginPageController> {
-  LoginPageView({super.key});
-
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  // AuthService authServices = AuthService();
-  final _formKey = GlobalKey<FormState>();
+  const LoginPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +65,7 @@ class LoginPageView extends GetView<LoginPageController> {
 
   _inputs() {
     return Form(
-      key: _formKey,
+      key: controller.formKey,
       child: Column(
         children: [
           _emailInput(),
@@ -86,7 +81,7 @@ class LoginPageView extends GetView<LoginPageController> {
       off: false,
       password: false,
       text: 'Seu e-mail',
-      controller: _emailController,
+      controller: controller.emailController,
     );
   }
 
@@ -95,7 +90,7 @@ class LoginPageView extends GetView<LoginPageController> {
       off: false,
       password: true,
       text: 'Sua senha',
-      controller: _passwordController,
+      controller: controller.passwordController,
     );
   }
 
@@ -107,45 +102,9 @@ class LoginPageView extends GetView<LoginPageController> {
         color: AppColors.primary,
         textColor: Colors.white,
         text: "Entrar",
-        // onPressed: () {
-        //   _loginButtonPressed(context);
-        // },
-        onPressed: () => Get.toNamed(Routes.HOME_PAGE),
+        onPressed: () => controller.loginUser(context),
       ),
     );
-  }
-
-  _loginButtonPressed(context) {
-    String email = _emailController.text;
-    String senha = _passwordController.text;
-
-    if (_formKey.currentState!.validate()) {
-      showDialog(
-        context: context,
-        barrierDismissible:
-            false, // Impedir que o diálogo seja fechado ao tocar fora dele
-        builder: (BuildContext context) {
-          return const LoadingAlert();
-        },
-      );
-      // authServices.loginUser(email: email, password: senha).then((error) {
-      //   Navigator.pop(context);
-      //   if (error == null) {
-      //     Navigator.pushNamed(context, '/NavPage');
-      //     showSnackBar(
-      //       context: context,
-      //       mensagem: "Logado com sucesso!",
-      //       isErro: false,
-      //     );
-      //   } else {
-      //     showSnackBar(
-      //       context: context,
-      //       mensagem: "Verifique seus dados",
-      //       isErro: true,
-      //     );
-      //   }
-      // });
-    }
   }
 
   _resetPasswordButton(context) {
@@ -180,9 +139,6 @@ class LoginPageView extends GetView<LoginPageController> {
         color: AppColors.primary,
         textColor: Colors.white,
         text: "Cadastre-se agora",
-        // onPressed: () {
-        //   Navigator.pushNamed(context, '/RegisterPage');
-        // },
         onPressed: () => Get.toNamed(Routes.REGISTER_PAGE),
       ),
     );

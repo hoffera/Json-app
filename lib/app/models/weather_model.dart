@@ -1,0 +1,74 @@
+import 'package:geocoding/geocoding.dart';
+
+class Weather {
+  final double latitude;
+  final double longitude;
+  final List<String> times;
+  final List<double> temperatures;
+  final List<double> precipitation;
+  final String city;
+
+  Weather({
+    required this.latitude,
+    required this.longitude,
+    required this.times,
+    required this.temperatures,
+    required this.precipitation,
+    required this.city,
+  });
+
+  factory Weather.fromJson(Map<String, dynamic> json) {
+    return Weather(
+      latitude: json['latitude'],
+      longitude: json['longitude'],
+      times: List<String>.from(json['hourly']['time']),
+      temperatures: List<double>.from(json['hourly']['temperature_2m']),
+      precipitation: List<double>.from(json['hourly']['precipitation']),
+      city: '',
+    );
+  }
+  static Future<Weather> fromJsonWithCity(Map<String, dynamic> json) async {
+    final weather = Weather.fromJson(json);
+
+    String city = 'Cidade desconhecida';
+    try {
+      final placemarks = await placemarkFromCoordinates(
+        weather.latitude,
+        weather.longitude,
+      );
+
+      print('Placemarks: $placemarks');
+      if (placemarks.isNotEmpty) {
+        print('Locality: ${placemarks.first.locality}');
+        print('SubAdminArea: ${placemarks.first.subAdministrativeArea}');
+        String? getNonEmptyString(List<String?> candidates) {
+          for (var s in candidates) {
+            if (s != null && s.isNotEmpty) return s;
+          }
+          return null;
+        }
+
+        city =
+            getNonEmptyString([
+              placemarks.first.locality,
+              placemarks.first.subAdministrativeArea,
+              placemarks.first.administrativeArea,
+            ]) ??
+            city;
+      }
+    } catch (e) {
+      // ignore erros de geocoding
+      print('Erro no geocoding: $e');
+    }
+
+    // Retorna uma nova instância com a cidade preenchida
+    return Weather(
+      latitude: weather.latitude,
+      longitude: weather.longitude,
+      times: weather.times,
+      temperatures: weather.temperatures,
+      precipitation: weather.precipitation,
+      city: city,
+    );
+  }
+}

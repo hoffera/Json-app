@@ -1,22 +1,46 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:json_app/components/graphs/linear_graph.dart';
-
+import 'package:json_app/components/background/background_degrade.dart';
 import '../controllers/home_page_controller.dart';
 
 class HomePageView extends GetView<HomePageController> {
   const HomePageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('HomePageView'), centerTitle: true),
+      backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          children: [
-            LinearGraph(value: 10, maximum: 50, minimum: 1),
-            LinearGraph(value: 1, maximum: 10, minimum: 1),
-          ],
-        ),
+        child: Obx(() {
+          final weather = controller.weather.value;
+
+          if (weather == null) {
+            return const CircularProgressIndicator(color: Colors.red);
+          }
+
+          return BackgroundDegrade(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image(image: AssetImage("lib/assets/rive/1.png")),
+                Text(
+                  'Cidade: ${weather.city}',
+                  style: const TextStyle(fontSize: 18, color: Colors.red),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'Temperatura: ${weather.temperatures.first}°C',
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }

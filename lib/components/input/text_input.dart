@@ -79,12 +79,12 @@ class TextInput extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
           filled: true,
-          fillColor: Colors.red,
+          fillColor: Colors.white,
           hintText: text,
           hintStyle: const TextStyle(color: Colors.grey, fontSize: 12.0),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
         ),
-        style: const TextStyle(color: Colors.white, fontSize: 12.0),
+        style: const TextStyle(color: Colors.black, fontSize: 12.0),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:json_app/app/enum/enum.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 
 part 'loading_alert.g.dart';
@@ -21,12 +22,13 @@ class LoadingAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AlertDialog(
+      backgroundColor: AppColors.background,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircularProgressIndicator(color: Colors.red),
+          CircularProgressIndicator(color: Colors.white),
           SizedBox(height: 16),
-          Text("Carregando...", style: TextStyle(color: Colors.red)),
+          Text("Carregando...", style: TextStyle(color: Colors.white)),
         ],
       ),
     );

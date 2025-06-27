@@ -4,6 +4,10 @@
 <dict>
 	<key>FLTEnableImpeller</key>
 	<false />
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para mostrar o clima local.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para mostrar o clima local mesmo quando o app estiver em segundo plano.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

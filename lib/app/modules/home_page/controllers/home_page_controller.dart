@@ -1,23 +1,27 @@
 import 'package:get/get.dart';
+import 'package:json_app/app/models/weather_model.dart';
+import 'package:json_app/services/weather_service.dart';
 
 class HomePageController extends GetxController {
-  //TODO: Implement HomePageController
+  final WeatherService _weatherService = WeatherService();
+  final Rxn<Weather> weather = Rxn<Weather>();
 
-  final count = 0.obs;
+  Future<void> fetchWeather() async {
+    try {
+      final position = await _weatherService.getCurrentPosition();
+      final result = await _weatherService.getWeather(
+        position.latitude,
+        position.longitude,
+      );
+      weather.value = result;
+    } catch (e) {
+      print('Erro ao buscar clima: $e');
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
+    fetchWeather();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
