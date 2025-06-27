@@ -9,6 +9,9 @@ class AppColors {
 
   /// Fundo roxo escuro
   static const background = Color(0xFF001b48);
+
+  static const backgroundCard = Color(0xFFf0faff);
+  static const borderCard = Color(0xFFdbeafe);
 }
 
 enum TypographyVariant {
@@ -33,5 +36,3 @@ enum TypographyVariant {
   /// font-size: 10
   h7,
 }
-
-enum _PositionItemType { log, position }

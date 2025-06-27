@@ -12,6 +12,8 @@ import '../modules/register_page/bindings/register_page_binding.dart';
 import '../modules/register_page/views/register_page_view.dart';
 import '../modules/test_page/bindings/test_page_binding.dart';
 import '../modules/test_page/views/test_page_view.dart';
+import '../modules/weather_page/bindings/weather_page_binding.dart';
+import '../modules/weather_page/views/weather_page_view.dart';
 
 part 'app_routes.dart';
 
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.TEST_PAGE,
       page: () => TestPageView(),
       binding: TestPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.WEATHER_PAGE,
+      page: () => WeatherPageView(),
+      binding: WeatherPageBinding(),
     ),
   ];
 }

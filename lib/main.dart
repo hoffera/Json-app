@@ -6,9 +6,11 @@ import 'package:json_app/app/modules/home_page/bindings/home_page_binding.dart';
 import 'package:json_app/app/modules/home_page/views/home_page_view.dart';
 import 'package:json_app/app/modules/login_page/views/login_page_view.dart';
 import 'package:json_app/app/modules/nav_page/views/nav_page_view.dart';
+import 'package:json_app/app/modules/test_page/views/test_page_view.dart';
+import 'package:json_app/app/modules/weather_page/controllers/weather_page_controller.dart';
 
 import 'package:json_app/app/themes/theme_provider.dart';
-import 'package:json_app/auth_controller.dart';
+import 'package:json_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:json_app/components/alert/loading_alert.dart';
 import 'package:json_app/firebase_options.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
@@ -38,6 +40,14 @@ void main() async {
       child: const MyApp(),
     ),
   );
+
+  registry.registerFunction(
+    'fetchWeather',
+    ({args, required registry}) => () async {
+      final controller = Get.find<WeatherPageController>();
+      await controller.fetchWeather();
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -50,7 +60,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: registry.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'JSON App',
-      home: RouteScreens(),
+      home: TestPageView(),
       getPages: AppPages.routes,
     );
   }
@@ -65,12 +75,14 @@ class RouteScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (authController.firebaseUser.value == null) {
-        // Navega para login
-        Future.microtask(() => Get.offAllNamed('/home-page'));
+        print("authController.firebaseUser.value");
+        print(authController.firebaseUser.value);
+        // Navega para home-home
+        Future.microtask(() => Get.offAllNamed('/home-home'));
         return Container();
       } else {
         // Navega para home
-        Future.microtask(() => Get.offAllNamed('/home-page'));
+        Future.microtask(() => Get.offAllNamed('/nav-page'));
         return Container();
       }
     });

@@ -18,6 +18,7 @@ class CustomWidgetRegistrar extends _CustomWidgetRegistrar {
   }) {
     registry ??= JsonWidgetRegistry.instance;
     return CustomWidgetRegistrar()
+      ..withBackgroundDegrade()
       ..withLinearGraph()
       ..withLoadingAlert()
       ..withSvg()
@@ -36,6 +37,15 @@ class CustomWidgetRegistrar extends _CustomWidgetRegistrar {
     for (var s in _schemas.entries) {
       schemaCache.addSchema(s.key, s.value);
     }
+  }
+
+  void withBackgroundDegrade() {
+    _builders[BackgroundDegradeBuilder.kType] =
+        const JsonWidgetBuilderContainer(
+          builder: BackgroundDegradeBuilder.fromDynamic,
+          schemaId: BackgroundDegradeSchema.id,
+        );
+    _schemas[BackgroundDegradeSchema.id] = BackgroundDegradeSchema.schema;
   }
 
   void withLinearGraph() {

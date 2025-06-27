@@ -1,36 +1,30 @@
-// nav_page.dart
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:json_app/app/enum/enum.dart';
-import 'package:json_app/app/modules/home_page/views/home_page_view.dart';
-import 'package:json_app/app/modules/login_page/views/login_page_view.dart';
 import 'package:json_app/app/modules/nav_page/controllers/nav_page_controller.dart';
 
-class NavPageView extends StatelessWidget {
-  NavPageView({super.key}) {
-    Get.put(NavPageController()).selectedIndex.value = 0;
-  }
+class NavPageView extends GetView<NavPageController> {
+  const NavPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final navController = Get.find<NavPageController>();
-
     return Obx(() {
       return Scaffold(
-        body: Container(), // ou algum widget básico
+        body: controller.pages[controller.currentIndex.value],
         bottomNavigationBar: CurvedNavigationBar(
           height: 50,
-          backgroundColor: AppColors.background,
+          backgroundColor: Colors.black,
           buttonBackgroundColor: AppColors.primary,
           color: AppColors.primary,
           animationDuration: const Duration(milliseconds: 500),
-          index: navController.selectedIndex.value,
+          index: controller.currentIndex.value,
           items: const [
             Icon(Icons.home, size: 26, color: Colors.white),
             Icon(Icons.settings, size: 26, color: Colors.white),
           ],
-          onTap: navController.changeIndex,
+          onTap: controller.changePage,
         ),
       );
     });

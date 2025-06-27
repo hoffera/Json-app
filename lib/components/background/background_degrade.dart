@@ -2,6 +2,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:json_app/app/enum/enum.dart';
+import 'package:json_dynamic_widget/json_dynamic_widget.dart';
+
+part 'background_degrade.g.dart';
+
+@jsonWidget
+abstract class _BackgroundDegradeBuilder extends JsonWidgetBuilder {
+  const _BackgroundDegradeBuilder({required super.args});
+
+  @override
+  BackgroundDegrade buildCustom({
+    ChildWidgetBuilder? childBuilder,
+    required BuildContext context,
+    required JsonWidgetData data,
+    Key? key,
+  });
+}
 
 class BackgroundDegrade extends StatelessWidget {
   final Widget? child;
