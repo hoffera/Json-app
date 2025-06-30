@@ -2,46 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:json_app/app/enum/enum.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:mix/mix.dart';
-import 'package:weather_icons/weather_icons.dart';
 
 class WeatherCard extends StatelessWidget {
-  WeatherCard({super.key});
+  final String city;
+  final String address;
+  final String temperature;
+  final String apparentTemperature;
 
-  final style = Style(
-    $box.height(180),
-    $box.width(double.infinity),
-    $box.padding.all(10),
-    $box.color(AppColors.backgroundCard),
-    $box.borderRadius.all(10.0),
-    $box.shadow(
-      color: Colors.black26,
-      blurRadius: 5,
-      spreadRadius: 2,
-      offset: Offset(0, 4),
-    ),
-    $box.border(
-      color: AppColors.borderCard,
-      width: 2,
-      style: BorderStyle.solid,
-      strokeAlign: 0.5,
-    ),
-  );
+  const WeatherCard({
+    super.key,
+    required this.city,
+    required this.address,
+    required this.temperature,
+    required this.apparentTemperature,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Box(style: style, child: body());
+    return Container(
+      height: 180,
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: AppColors.backgroundCard,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 5,
+            spreadRadius: 2,
+            offset: const Offset(0, 4),
+          ),
+        ],
+        border: Border.all(color: AppColors.borderCard, width: 2),
+      ),
+      child: body(),
+    );
   }
 
   Widget body() {
-    return Column(children: [fistLine(), SizedBox(height: 20), secondLine()]);
+    return Column(
+      children: [firstLine(), const SizedBox(height: 20), secondLine()],
+    );
   }
 
-  Widget fistLine() {
+  Widget firstLine() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [tempIcon(), temperature(), city()],
+      children: [tempIcon(), temp(), cityAddress()],
     );
   }
 
@@ -53,23 +62,23 @@ class WeatherCard extends StatelessWidget {
         card(
           "3.0 nós",
           "SSW",
-          Color(0xFFecfeff),
+          const Color(0xFFecfeff),
           LucideIcons.wind,
-          Color(0xFF22bfd9),
+          const Color(0xFF22bfd9),
         ),
         card(
           "79%",
           "Umidade",
-          Color(0xFFeff6ff),
+          const Color(0xFFeff6ff),
           LucideIcons.droplets,
-          Color(0xFF4387f6),
+          const Color(0xFF4387f6),
         ),
         card(
           "1018",
           "Pressão",
-          Color(0xFFfffbeb),
+          const Color(0xFFfffbeb),
           LucideIcons.thermometer,
-          Color(0xFFf6ab2b),
+          const Color(0xFFf6ab2b),
         ),
       ],
     );
@@ -83,23 +92,22 @@ class WeatherCard extends StatelessWidget {
     );
   }
 
-  Widget temperature() {
+  Widget temp() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
-
       children: [
         Text(
-          "17°C",
-          style: TextStyle(
+          "$temperature°C",
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
         ),
         Text(
-          "Sensação térmica: 18°C",
-          style: TextStyle(
+          "Sensação térmica: $apparentTemperature°C",
+          style: const TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.normal,
             fontSize: 13,
@@ -109,23 +117,22 @@ class WeatherCard extends StatelessWidget {
     );
   }
 
-  Widget city() {
+  Widget cityAddress() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-
       children: [
         Text(
-          "Paranaguá",
-          style: TextStyle(
+          city,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
         ),
         Text(
-          "Portos do Paraná",
-          style: TextStyle(
+          address,
+          style: const TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.normal,
             fontSize: 14,
@@ -142,35 +149,35 @@ class WeatherCard extends StatelessWidget {
     IconData icon,
     Color iconColor,
   ) {
-    final styleCard = Style(
-      $box.height(60),
-      $box.width(100),
-      $box.padding.all(10),
-      $box.color(backgroundColor),
-      $box.borderRadius.all(10.0),
-      $box.shadow(
-        color: Colors.black.withValues(alpha: 0.2), // sombra mais leve
-        blurRadius: 10,
-        spreadRadius: 0,
-        offset: Offset(0, 2),
+    return Container(
+      height: 60,
+      width: 100,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 10,
+            spreadRadius: 0,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
-    );
-
-    return Box(
-      style: styleCard,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Icon(icon, size: 20, weight: 20, color: iconColor),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
@@ -178,7 +185,7 @@ class WeatherCard extends StatelessWidget {
               ),
               Text(
                 subtitle,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   fontWeight: FontWeight.normal,
                   fontSize: 10,

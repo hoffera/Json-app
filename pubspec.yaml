@@ -52,6 +52,9 @@ dependencies:
   flutter_echarts: ^2.5.0
   weather_icons: ^3.0.0
   lucide_icons: ^0.257.0
+  path_provider: ^2.0.15
+  share_plus: ^7.2.1
+
 
 dev_dependencies:
   build_runner: ^2.5.4
@@ -78,6 +81,7 @@ flutter:
   assets:
     - lib/assets/images/
     - lib/assets/rive/
+    - lib/assets/json/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

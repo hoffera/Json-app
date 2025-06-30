@@ -13,6 +13,7 @@ import 'package:json_app/app/themes/theme_provider.dart';
 import 'package:json_app/app/modules/auth/controllers/auth_controller.dart';
 import 'package:json_app/components/alert/loading_alert.dart';
 import 'package:json_app/firebase_options.dart';
+import 'package:json_app/testes/example.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:json_app/app/routes/app_pages.dart';
 import 'package:json_app/components/custom_widget_registrar.dart';
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: registry.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'JSON App',
-      home: TestPageView(),
+      home: ExportExamplePage(),
       getPages: AppPages.routes,
     );
   }
@@ -82,7 +83,7 @@ class RouteScreens extends StatelessWidget {
         return Container();
       } else {
         // Navega para home
-        Future.microtask(() => Get.offAllNamed('/nav-page'));
+        Future.microtask(() => Get.offAllNamed('/test-page'));
         return Container();
       }
     });
