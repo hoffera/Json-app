@@ -15,7 +15,7 @@ class _TestPageViewState extends State<TestPageView> {
   Future<JsonWidgetData?> loadJsonWidgetData() async {
     try {
       final jsonStr = await rootBundle.loadString(
-        'lib/assets/json/weather_card.json',
+        'lib/assets/json/card_automatico.json',
       );
       final jsonMap = json.decode(jsonStr);
       return JsonWidgetData.fromDynamic(jsonMap, registry: registry);

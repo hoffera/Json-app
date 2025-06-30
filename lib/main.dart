@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: registry.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'JSON App',
-      home: ExportExamplePage(),
+      home: TestPageView(),
       getPages: AppPages.routes,
     );
   }
