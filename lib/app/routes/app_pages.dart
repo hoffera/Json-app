@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import '../modules/home_home/bindings/home_home_binding.dart';
 import '../modules/home_home/views/home_home_view.dart';
+import '../modules/home_json/bindings/home_json_binding.dart';
+import '../modules/home_json/views/home_json_view.dart';
+import '../modules/home_json_screen_page/bindings/home_json_screen_page_binding.dart';
+import '../modules/home_json_screen_page/views/home_json_screen_page_view.dart';
 import '../modules/home_page/bindings/home_page_binding.dart';
 import '../modules/home_page/views/home_page_view.dart';
 import '../modules/login_page/bindings/login_page_binding.dart';
@@ -57,6 +61,16 @@ class AppPages {
       name: _Paths.WEATHER_PAGE,
       page: () => WeatherPageView(),
       binding: WeatherPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_JSON,
+      page: () => const HomeJsonView(),
+      binding: HomeJsonBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_JSON_SCREEN_PAGE,
+      page: () => JsonScreenPage(jsonPath: ''),
+      binding: HomeJsonScreenPageBinding(),
     ),
   ];
 }

@@ -56,90 +56,117 @@ class _ExportExamplePageState extends State<ExportExamplePage> {
         backgroundColor: Colors.black,
         title: const Text('Exporter', style: TextStyle(color: Colors.white)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: JsonWidgetExporter(
-          key: _exportKey,
-          child: JsonExportable(
-            child: JsonContainer(
-              foregroundDecoration: null,
-              height: 180,
-              width: double.infinity,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Color(0xFFf0faff),
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 5,
-                    spreadRadius: 2,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-                border: Border.all(color: Color(0xFFdbeafe), width: 2),
-              ),
-              child: JsonColumn(
-                children: [
-                  JsonRow(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      JsonIcon(
-                        IconData(0xe174, fontFamily: 'MaterialIcons'),
-                        size: 64,
-                        color: Colors.black,
-                      ),
-                      JsonColumn(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          JsonText(
-                            "17°C",
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          JsonText(
-                            "Sensação térmica: 18°C",
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 13,
-                            ),
+      body: JsonWidgetExporter(
+        key: _exportKey,
+        child: JsonExportable(
+          child: JsonScaffold(
+            backgroundColor: Color(0xFFf0faff),
+            body: JsonSingleChildScrollView(
+              child: JsonPadding(
+                padding: EdgeInsetsGeometry.all(20),
+                child: JsonColumn(
+                  children: [
+                    JsonContainer(
+                      foregroundDecoration: null,
+                      height: 180,
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFf0faff),
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 4),
                           ),
                         ],
+                        border: Border.all(color: Color(0xFFdbeafe), width: 2),
                       ),
-                      JsonColumn(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: JsonColumn(
                         children: [
-                          JsonText(
-                            "Paranaguá",
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                            ),
+                          JsonRow(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              JsonIcon(
+                                IconData(0xe174, fontFamily: 'MaterialIcons'),
+                                size: 60,
+                                color: Color(0xFF4387f6),
+                              ),
+                              JsonColumn(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  JsonText(
+                                    "17°C",
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                  JsonText(
+                                    "Sensação térmica: 18°C",
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 11,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              JsonColumn(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  JsonText(
+                                    "Paranaguá",
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  JsonText(
+                                    "Portos do Paraná",
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.normal,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          JsonText(
-                            "Portos do Paraná",
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
 
-                  JsonSizedBox(height: 20),
-                  secondLine(),
-                ],
+                          JsonSizedBox(height: 20),
+                          secondLine(),
+                        ],
+                      ),
+                    ),
+                    JsonSizedBox(height: 20),
+                    JsonRow(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        JsonText(
+                          "Previsões Detalhadas",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 23,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    JsonSizedBox(height: 20),
+                    cardL(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -231,6 +258,232 @@ class _ExportExamplePageState extends State<ExportExamplePage> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  JsonContainer cardL() {
+    return JsonContainer(
+      width: double.infinity,
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Color(0xFFf0faff),
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 5,
+            spreadRadius: 2,
+            offset: const Offset(0, 4),
+          ),
+        ],
+        border: Border.all(color: Color(0xFFdbeafe), width: 2),
+      ),
+      foregroundDecoration: null,
+      child: JsonColumn(
+        children: [
+          rain(),
+          JsonSizedBox(height: 10),
+          titles(),
+          JsonSizedBox(height: 10),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+          line(),
+          linearInfos("11:00", 0xf04cf, "0.4 mm", 0.91),
+          line(),
+          linearInfos("13:00", 0xf04cf, "0.2 mm", 0.28),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 0.5),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+          line(),
+          linearInfos("09:00", 0xf04cf, "0.7 mm", 1),
+        ],
+      ),
+    );
+  }
+
+  JsonRow rain() {
+    return JsonRow(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        JsonText(
+          "Previsão de Chuvas",
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            fontSize: 23,
+          ),
+        ),
+        JsonIcon(
+          IconData(0xf04cf, fontFamily: 'MaterialIcons'),
+          size: 23,
+          color: Color(0xFF4387f6),
+        ),
+      ],
+    );
+  }
+
+  JsonRow titles() {
+    return JsonRow(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        JsonExpanded(
+          child: JsonColumn(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              JsonText(
+                "Hora",
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+        JsonExpanded(
+          child: JsonColumn(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              JsonText(
+                "Condição",
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+        JsonExpanded(
+          child: JsonColumn(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              JsonText(
+                "Precipit.",
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+        JsonExpanded(
+          child: JsonColumn(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              JsonText(
+                "Probabil.",
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  JsonSizedBox linearInfos(
+    String hora,
+    int iconHex,
+    String precipit,
+    double porcentagem,
+  ) {
+    return JsonSizedBox(
+      height: 40,
+      child: JsonRow(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          JsonExpanded(
+            child: JsonColumn(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                JsonText(
+                  hora,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ),
+          JsonExpanded(
+            child: JsonColumn(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                JsonIcon(
+                  IconData(iconHex, fontFamily: 'MaterialIcons'),
+                  size: 23,
+                  color: Color(0xFF4387f6),
+                ),
+              ],
+            ),
+          ),
+          JsonExpanded(
+            child: JsonColumn(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [JsonText(precipit, style: TextStyle(fontSize: 18))],
+            ),
+          ),
+          JsonExpanded(
+            child: JsonColumn(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [porcentagemWidget(porcentagem)],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  JsonSizedBox porcentagemWidget(double porcentagem) {
+    const larguraTotal = 30.0;
+    final larguraCalculada = larguraTotal * porcentagem;
+    final larguraAtual = larguraCalculada < 10.0 ? 10.0 : larguraCalculada;
+
+    return JsonSizedBox(
+      child: JsonRow(
+        children: [
+          JsonStack(
+            children: [
+              JsonContainer(
+                width: larguraTotal,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                foregroundDecoration: null,
+              ),
+              JsonContainer(
+                width: larguraAtual,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.horizontal(
+                    left: const Radius.circular(20),
+                    right: Radius.circular(porcentagem >= 0.9 ? 20 : 0),
+                  ),
+                ),
+                foregroundDecoration: null,
+              ),
+            ],
+          ),
+          JsonSizedBox(width: 8),
+          JsonText('${(porcentagem * 100).toStringAsFixed(0)}%'),
+        ],
+      ),
+    );
+  }
+
+  JsonContainer line() {
+    return JsonContainer(
+      foregroundDecoration: null,
+      width: double.infinity,
+      height: 1,
+      decoration: BoxDecoration(
+        color: Colors.grey[300], // linha cinza clara
       ),
     );
   }

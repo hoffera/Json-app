@@ -11,6 +11,8 @@ abstract class Routes {
   static const REGISTER_PAGE = _Paths.REGISTER_PAGE;
   static const TEST_PAGE = _Paths.TEST_PAGE;
   static const WEATHER_PAGE = _Paths.WEATHER_PAGE;
+  static const HOME_JSON = _Paths.HOME_JSON;
+  static const HOME_JSON_SCREEN_PAGE = _Paths.HOME_JSON_SCREEN_PAGE;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const REGISTER_PAGE = '/register-page';
   static const TEST_PAGE = '/test-page';
   static const WEATHER_PAGE = '/weather-page';
+  static const HOME_JSON = '/home-json';
+  static const HOME_JSON_SCREEN_PAGE = '/home-json-screen-page';
 }

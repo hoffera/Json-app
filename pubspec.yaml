@@ -54,6 +54,7 @@ dependencies:
   lucide_icons: ^0.257.0
   path_provider: ^2.0.15
   share_plus: ^7.2.1
+  fl_chart: ^1.0.0
 
 
 dev_dependencies:
@@ -82,6 +83,7 @@ flutter:
     - lib/assets/images/
     - lib/assets/rive/
     - lib/assets/json/
+    - lib/assets/json_pages/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
