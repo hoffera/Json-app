@@ -1,15 +1,20 @@
 import 'package:geocoding/geocoding.dart';
+import 'package:provider/provider.dart';
 
 class Weather {
   final double latitude;
   final double longitude;
   final List<String> times;
   final List<double> temperatures;
+  final double tempMax;
+  final double tempMin;
   final List<double> precipitation;
   final String city;
   final int weatherCode;
 
   Weather({
+    required this.tempMax,
+    required this.tempMin,
     required this.latitude,
     required this.longitude,
     required this.times,
@@ -28,6 +33,8 @@ class Weather {
       precipitation: List<double>.from(json['hourly']['precipitation']),
       city: '',
       weatherCode: json['current_weather']?['weathercode'] ?? 0,
+      tempMax: (json['daily']['temperature_2m_max'][0] as num).toDouble(),
+      tempMin: (json['daily']['temperature_2m_min'][0] as num).toDouble(),
     );
   }
   static Future<Weather> fromJsonWithCity(Map<String, dynamic> json) async {
@@ -73,6 +80,8 @@ class Weather {
       precipitation: weather.precipitation,
       city: city,
       weatherCode: weather.weatherCode,
+      tempMax: weather.tempMax,
+      tempMin: weather.tempMin,
     );
   }
 }

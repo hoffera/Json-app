@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:json_app/app/enum/enum.dart';
 import 'package:json_app/components/background/background_degrade.dart';
 import '../controllers/home_page_controller.dart';
 
@@ -18,7 +19,7 @@ class HomePageView extends GetView<HomePageController> {
           final weather = controller.weather.value;
 
           if (weather == null) {
-            return const CircularProgressIndicator(color: Colors.red);
+            return const CircularProgressIndicator(color: AppColors.primary);
           }
 
           return BackgroundDegrade(
@@ -44,7 +45,7 @@ class HomePageView extends GetView<HomePageController> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  getTemp(10),
+                  getTemp(weather.tempMax, weather.tempMin),
                 ],
               ),
             ),
@@ -111,7 +112,7 @@ class HomePageView extends GetView<HomePageController> {
     );
   }
 
-  Widget getTemp(double temperatura) {
+  Widget getTemp(double max, double min) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -119,13 +120,13 @@ class HomePageView extends GetView<HomePageController> {
         Image.asset('lib/assets/rive/13.png', scale: 8),
         const SizedBox(width: 5),
         Text(
-          'Temp Max\n$temperatura °C',
+          'Temp Max\n$max °C',
           style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
         ),
         Image.asset('lib/assets/rive/14.png', scale: 8),
         const SizedBox(width: 5),
         Text(
-          'Temp Min\n$temperatura °C',
+          'Temp Min\n$min °C',
           style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
         ),
       ],

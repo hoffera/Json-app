@@ -6,7 +6,7 @@ import 'package:json_app/app/models/weather_model.dart';
 class WeatherService {
   static const String BASE_URL = 'https://api.open-meteo.com/v1/forecast';
   static const String PARAMETERS =
-      'hourly=temperature_2m,precipitation&current_weather=true';
+      'hourly=temperature_2m,precipitation&current_weather=true&daily=temperature_2m_max,temperature_2m_min&timezone=auto';
 
   Future<Weather?> getWeather(double latitude, double longitude) async {
     final url = Uri.parse(
@@ -18,6 +18,7 @@ class WeatherService {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        print(jsonEncode(data));
         return await Weather.fromJsonWithCity(data);
       } else {
         print('Erro ao buscar clima: ${response.statusCode}');
@@ -25,6 +26,7 @@ class WeatherService {
       }
     } catch (e) {
       print('Exceção ao buscar clima: $e');
+
       return null;
     }
   }
