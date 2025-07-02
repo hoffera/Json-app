@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:json_app/components/graphs/temp_graph.dart';
 import 'package:json_app/main.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 
@@ -14,6 +15,9 @@ class TestPageView extends StatefulWidget {
 class _TestPageViewState extends State<TestPageView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Placeholder());
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(child: TempGraph()),
+    );
   }
 }
