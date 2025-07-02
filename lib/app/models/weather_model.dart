@@ -7,6 +7,7 @@ class Weather {
   final List<double> temperatures;
   final List<double> precipitation;
   final String city;
+  final int weatherCode;
 
   Weather({
     required this.latitude,
@@ -15,6 +16,7 @@ class Weather {
     required this.temperatures,
     required this.precipitation,
     required this.city,
+    required this.weatherCode,
   });
 
   factory Weather.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class Weather {
       temperatures: List<double>.from(json['hourly']['temperature_2m']),
       precipitation: List<double>.from(json['hourly']['precipitation']),
       city: '',
+      weatherCode: json['current_weather']?['weathercode'] ?? 0,
     );
   }
   static Future<Weather> fromJsonWithCity(Map<String, dynamic> json) async {
@@ -69,6 +72,7 @@ class Weather {
       temperatures: weather.temperatures,
       precipitation: weather.precipitation,
       city: city,
+      weatherCode: weather.weatherCode,
     );
   }
 }

@@ -10,6 +10,8 @@ import '../modules/home_page/bindings/home_page_binding.dart';
 import '../modules/home_page/views/home_page_view.dart';
 import '../modules/login_page/bindings/login_page_binding.dart';
 import '../modules/login_page/views/login_page_view.dart';
+import '../modules/logout_page/bindings/logout_page_binding.dart';
+import '../modules/logout_page/views/logout_page_view.dart';
 import '../modules/nav_page/bindings/nav_page_binding.dart';
 import '../modules/nav_page/views/nav_page_view.dart';
 import '../modules/register_page/bindings/register_page_binding.dart';
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.HOME_JSON_SCREEN_PAGE,
       page: () => JsonScreenPage(jsonPath: ''),
       binding: HomeJsonScreenPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGOUT_PAGE,
+      page: () => const LogoutPageView(),
+      binding: LogoutPageBinding(),
     ),
   ];
 }

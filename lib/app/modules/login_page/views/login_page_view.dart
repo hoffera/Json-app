@@ -10,6 +10,7 @@ import 'package:json_app/components/buttons/primary/primary_button.dart';
 import 'package:json_app/components/dialog/reset_password_dialog.dart';
 import 'package:json_app/components/dialog/show_snackbar.dart';
 import 'package:json_app/components/input/text_input.dart';
+import 'package:json_app/components/logo/logo_widget.dart';
 import 'package:json_app/components/others/or_widget.dart';
 import 'package:mix/mix.dart';
 
@@ -28,6 +29,7 @@ class LoginPageView extends GetView<LoginPageController> {
             reverse: true,
             child: Column(
               children: [
+                LogoWidget(),
                 const SizedBox(height: 10.0),
                 _enterText(),
                 const SizedBox(height: 10.0),

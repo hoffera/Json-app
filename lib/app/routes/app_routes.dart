@@ -13,6 +13,7 @@ abstract class Routes {
   static const WEATHER_PAGE = _Paths.WEATHER_PAGE;
   static const HOME_JSON = _Paths.HOME_JSON;
   static const HOME_JSON_SCREEN_PAGE = _Paths.HOME_JSON_SCREEN_PAGE;
+  static const LOGOUT_PAGE = _Paths.LOGOUT_PAGE;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const WEATHER_PAGE = '/weather-page';
   static const HOME_JSON = '/home-json';
   static const HOME_JSON_SCREEN_PAGE = '/home-json-screen-page';
+  static const LOGOUT_PAGE = '/logout-page';
 }

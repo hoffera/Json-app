@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:json_app/app/enum/enum.dart';
 import 'package:json_app/components/buttons/primary/primary_button.dart';
 import 'package:json_app/app/routes/app_pages.dart';
+import 'package:json_app/components/logo/logo_widget.dart';
 import '../controllers/home_home_controller.dart';
 
 class HomeHomeView extends GetView<HomeHomeController> {
@@ -19,6 +20,7 @@ class HomeHomeView extends GetView<HomeHomeController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              LogoWidget(),
               const SizedBox(height: 100.0),
               _enterButton(context),
               const SizedBox(height: 20.0),

@@ -5,7 +5,8 @@ import 'package:json_app/app/models/weather_model.dart';
 
 class WeatherService {
   static const String BASE_URL = 'https://api.open-meteo.com/v1/forecast';
-  static const String PARAMETERS = 'hourly=temperature_2m,precipitation';
+  static const String PARAMETERS =
+      'hourly=temperature_2m,precipitation&current_weather=true';
 
   Future<Weather?> getWeather(double latitude, double longitude) async {
     final url = Uri.parse(
