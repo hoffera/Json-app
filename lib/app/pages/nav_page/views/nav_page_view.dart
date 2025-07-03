@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:json_app/app/enum/enum.dart';
-import 'package:json_app/app/modules/nav_page/controllers/nav_page_controller.dart';
+import 'package:json_app/app/pages/nav_page/controllers/nav_page_controller.dart';
 
 class NavPageView extends GetView<NavPageController> {
   const NavPageView({super.key});

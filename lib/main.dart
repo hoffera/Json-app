@@ -2,11 +2,14 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:json_app/app/modules/home_json/bindings/home_json_binding.dart';
-import 'package:json_app/app/modules/home_json_screen_page/views/full_widget_page.dart';
-import 'package:json_app/app/modules/weather_page/controllers/weather_page_controller.dart';
+import 'package:json_app/app/pages/antonina/antonina_page.dart';
+import 'package:json_app/app/pages/home_json/bindings/home_json_binding.dart';
+import 'package:json_app/app/pages/home_json_screen_page/views/full_widget_page.dart';
+import 'package:json_app/app/pages/test_page/views/test.dart';
+import 'package:json_app/app/pages/test_page/views/test_page_view.dart';
+import 'package:json_app/app/pages/weather_page/controllers/weather_page_controller.dart';
 import 'package:json_app/app/themes/theme_provider.dart';
-import 'package:json_app/app/modules/auth/controllers/auth_controller.dart';
+import 'package:json_app/app/pages/auth/controllers/auth_controller.dart';
 import 'package:json_app/firebase_options.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:json_app/app/routes/app_pages.dart';
@@ -72,7 +75,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: registry.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Weather App',
-      home: RouteScreens(),
+      home: AntoninaPage(),
       initialBinding: HomeJsonBinding(),
       getPages: AppPages.routes,
     );

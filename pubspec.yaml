@@ -55,6 +55,9 @@ dependencies:
   path_provider: ^2.0.15
   share_plus: ^7.2.1
   fl_chart: ^1.0.0
+  graphic: ^2.6.0
+  k_chart: ^0.7.1
+  deep_pick: ^1.1.0
 
 
 dev_dependencies:
@@ -81,7 +84,6 @@ flutter:
   uses-material-design: true
   assets:
     - lib/assets/images/
-    - lib/assets/rive/
     - lib/assets/json/
     - lib/assets/json_pages/
 

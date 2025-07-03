@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:json_app/app/modules/home_json_screen_page/views/home_json_screen_page_view.dart';
+import 'package:json_app/app/pages/home_json_screen_page/views/home_json_screen_page_view.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 
 import '../controllers/home_json_controller.dart';

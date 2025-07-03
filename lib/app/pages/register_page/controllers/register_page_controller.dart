@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:json_app/app/routes/app_pages.dart';
 import 'package:json_app/components/dialog/show_snackbar.dart';
 import 'package:json_app/services/auth_service.dart';
-import 'package:json_app/services/token_services.dart'; // ajuste conforme seu projeto
 
 class RegisterPageController extends GetxController {
   final nameController = TextEditingController();
